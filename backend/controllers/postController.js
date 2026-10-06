@@ -1,9 +1,6 @@
 const Post = require('../models/Post');
 const { uploadToCloudinary } = require('../middleware/uploadMiddleware');
 
-// @desc    Get all posts for home feed
-// @route   GET /api/posts
-// @access  Public
 const getPosts = async (req, res) => {
   try {
     const posts = await Post.find()
@@ -16,9 +13,7 @@ const getPosts = async (req, res) => {
   }
 };
 
-// @desc    Create a new post
-// @route   POST /api/posts
-// @access  Private
+
 const createPost = async (req, res) => {
   try {
     const { caption } = req.body;
@@ -45,9 +40,6 @@ const createPost = async (req, res) => {
   }
 };
 
-// @desc    Delete post by owner
-// @route   DELETE /api/posts/:id
-// @access  Private
 const deletePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -69,9 +61,6 @@ const deletePost = async (req, res) => {
   }
 };
 
-// @desc    Like a post
-// @route   POST /api/posts/:id/like
-// @access  Private
 const likePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -91,10 +80,6 @@ const likePost = async (req, res) => {
     res.status(500).json({ message: error.message || 'Server error' });
   }
 };
-
-// @desc    Unlike a post
-// @route   DELETE /api/posts/:id/like
-// @access  Private
 const unlikePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);

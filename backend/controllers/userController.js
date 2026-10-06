@@ -1,9 +1,7 @@
 const User = require('../models/User');
 const Post = require('../models/Post');
 
-// @desc    Get user profile by username with posts
-// @route   GET /api/users/:username
-// @access  Public
+
 const getUserProfile = async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username.toLowerCase() })
@@ -26,9 +24,7 @@ const getUserProfile = async (req, res) => {
   }
 };
 
-// @desc    Update profile (username and bio)
-// @route   PUT /api/users/profile
-// @access  Private
+
 const updateUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
@@ -67,9 +63,7 @@ const updateUserProfile = async (req, res) => {
   }
 };
 
-// @desc    Follow a user
-// @route   POST /api/users/:id/follow
-// @access  Private
+
 const followUser = async (req, res) => {
   try {
     const targetUserId = req.params.id;
@@ -100,9 +94,7 @@ const followUser = async (req, res) => {
   }
 };
 
-// @desc    Unfollow a user
-// @route   DELETE /api/users/:id/follow
-// @access  Private
+
 const unfollowUser = async (req, res) => {
   try {
     const targetUserId = req.params.id;
